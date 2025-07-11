@@ -1,40 +1,34 @@
-# credit-card-fraud-detection
-Proyecto interdisciplinario de machine learning para detección de transacciones fraudulentas · Portfolio profesional
+# 💳 Detección de Fraude Financiero · Credit Card Fraud Detection
 
-# 💳 Credit Card Fraud Detection · Portfolio Profesional
+Este proyecto forma parte de mi portafolio profesional como analista certificado por Google en Ciencia de Datos, Business Intelligence y UX.  
+Utiliza aprendizaje automático (Random Forest) para identificar transacciones fraudulentas en un dataset bancario real. Se incluyen visualizaciones técnicas y métricas de evaluación.
 
-Este proyecto forma parte de mi portafolio como Analista Certificado por Google en Ciencia de Datos, Business Intelligence y UX.  
-Se aplica machine learning para identificar transacciones fraudulentas, utilizando Random Forest y visualizaciones clave.
-
----
-
-## 📊 Dataset
-
-- **Fuente:** Kaggle – [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-- 284,807 transacciones reales
-- 492 etiquetadas como fraudulentas (`Class = 1`)
+🔗 **Dataset original:** Kaggle – [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)  
+📈 **Visualizaciones:** Matriz de Confusión · Curva ROC · Heatmap  
+📦 **Librerías utilizadas:** pandas · scikit-learn · seaborn · matplotlib · imbalanced-learn  
+🛡️ **Licencia:** MIT
 
 ---
 
-## 🧠 Modelo
+This project is part of my professional portfolio as a Google-certified analyst in Data Science, Business Intelligence and UX.  
+It applies machine learning (Random Forest) to detect fraudulent credit card transactions using real financial data. Includes technical visualizations and model evaluation metrics.
 
-- Algoritmo: Random Forest
-- División de datos: entrenamiento y validación
-- Métricas: matriz de confusión · precisión · recall · curva ROC
-- Balanceo de clases (SMOTE opcional)
+🔗 **Dataset source:** Kaggle – [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)  
+📈 **Visuals included:** Confusion Matrix · ROC Curve · Heatmap  
+📦 **Libraries used:** pandas · scikit-learn · seaborn · matplotlib · imbalanced-learn  
+🛡️ **License:** MIT
+
+---
+👨🏻‍💼 Autor
+##David Sebastian Diaz· Analista certificado en Ciencia de Datos, UX & BI
+Google-certified analyst in BI · UX · Data Science  
+![David Avatar](./avatar.jpg)
 
 ---
 
-## 📈 Visualizaciones
-
-- Mapa de calor (`heatmap`) de correlaciones
-- Matriz de confusión
-- Curva ROC
-
----
-
-## ⚙️ Requisitos
+## 🛠️ Instalación / Setup
 
 ```bash
-pip install pandas scikit-learn matplotlib seaborn imbalanced-learn
+pip install -r requirements.txt
+
 
