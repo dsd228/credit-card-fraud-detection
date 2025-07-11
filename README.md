@@ -1,34 +1,42 @@
-# 💳 Detección de Fraude Financiero · Credit Card Fraud Detection
+# 👋 Hola, soy David · Hi, I'm David
 
-Este proyecto forma parte de mi portafolio profesional como analista certificado por Google en Ciencia de Datos, Business Intelligence y UX.  
-Utiliza aprendizaje automático (Random Forest) para identificar transacciones fraudulentas en un dataset bancario real. Se incluyen visualizaciones técnicas y métricas de evaluación.
-
-🔗 **Dataset original:** Kaggle – [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)  
-📈 **Visualizaciones:** Matriz de Confusión · Curva ROC · Heatmap  
-📦 **Librerías utilizadas:** pandas · scikit-learn · seaborn · matplotlib · imbalanced-learn  
-🛡️ **Licencia:** MIT
+🎓 Analista certificado por Google en Ciencia de Datos, UX y Business Intelligence  
+📊 Aplico visualización, estrategia y machine learning para resolver problemas reales en contextos interdisciplinarios.
 
 ---
 
-This project is part of my professional portfolio as a Google-certified analyst in Data Science, Business Intelligence and UX.  
-It applies machine learning (Random Forest) to detect fraudulent credit card transactions using real financial data. Includes technical visualizations and model evaluation metrics.
+## 🚀 Proyecto destacado / Featured Project
 
-🔗 **Dataset source:** Kaggle – [Credit Card Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)  
-📈 **Visuals included:** Confusion Matrix · ROC Curve · Heatmap  
-📦 **Libraries used:** pandas · scikit-learn · seaborn · matplotlib · imbalanced-learn  
-🛡️ **License:** MIT
-
----
-👨🏻‍💼 Autor
-##David Sebastian Diaz· Analista certificado en Ciencia de Datos, UX & BI
-Google-certified analyst in BI · UX · Data Science  
-![David Avatar](./avatar.jpg)
+💳 [Detección de Fraude Financiero](https://github.com/dsd228/credit-card-fraud-detection)  
+Análisis de transacciones bancarias con Random Forest, visualizaciones clave y métricas de evaluación.  
+_Machine learning aplicado sobre datos reales, parte del portfolio profesional._
 
 ---
 
-## 🛠️ Instalación / Setup
+## 🌐 Idiomas / Languages
 
-```bash
-pip install -r requirements.txt
+- Español (nativo)
+- Inglés (profesional)
+
+---
+
+## 📫 Contacto / Contact
+
+- [LinkedIn]([https://www.linkedin.com/in/TU_USUARIO](https://www.linkedin.com/in/david-sebastian-diaz-586568332))
+- 📧 dsd228.dd@gmail.com
+
+---
+
+## ✨ Intereses / Interests
+
+- Visualización de datos 📊
+- UX & diseño centrado en el usuario 🎨
+- Inteligencia Artificial aplicada 🤖
+- Estrategia y toma de decisiones empresariales 💼
+
+---
+
+> Este perfil representa mi trabajo técnico, estilo visual y enfoque profesional interdisciplinario.  
+> ¡Gracias por visitar! / Thanks for stopping by!
 
 
