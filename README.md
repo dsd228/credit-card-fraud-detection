@@ -9,7 +9,7 @@ pero va todo  pegado? asi? # 💳 Financial Fraud Detection with Machine Learnin
 
 **David Sebastián Díaz**  
 Certified in Data Science, UX Design, and Business Intelligence by Google  
-📫 dsd228.dd@gmail.com | [LinkedIn](https://www.linkedin.com/in/tu-enlace) | [GitHub](https://github.com/tuusuario)
+📫 david.diaz.uxdata@gmail.com | [LinkedIn](linkedin.com/in/david-sebastian-diaz-586568332) | [GitHub](https://github.com/228)
 
 🎯 I apply data visualization, strategy, and machine learning to solve real-world interdisciplinary problems.  
 🎯 Aplico visualización de datos, estrategia y aprendizaje automático para resolver problemas reales en contextos interdisciplinarios.
@@ -100,8 +100,8 @@ Editar
 ## 📬 Contact / Contacto
 
 📧 dsd228.dd@gmail.com  
-🌐 [LinkedIn](https://www.linkedin.com/in/tu-enlace)  
-📁 [Portafolio](https://www.tu-portafolio.com)
+🌐 [LinkedIn](linkedin.com/in/david-sebastian-diaz-586568332)  
+📁 [Portafolio](https://github.com/228)
 
 ---
 
