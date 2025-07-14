@@ -1,5 +1,4 @@
-pero va todo  pegado? asi? # 💳 Financial Fraud Detection with Machine Learning  
-# 🛡️ Detección de Fraude Financiero con Aprendizaje Automático
+  # 🛡️ Detección de Fraude Financiero con Aprendizaje Automático
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
