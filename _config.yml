@@ -1,0 +1,12 @@
+title: "Credit Card Fraud Detection"
+description: "Proyecto interdisciplinario de machine learning para detección de transacciones fraudulentas · Portfolio profesional"
+theme: minima
+lang: es
+url: "https://dsd228.github.io/credit-card-fraud-detection/"
+# Personalización avanzada
+show_excerpts: true
+author:
+  name: "David Sebastián Díaz"
+  email: "david.diaz.uxdata@gmail.com"
+  github: "dsd228"
+  linkedin: "https://linkedin.com/in/david-sebastian-diaz-586568332"
