@@ -5,76 +5,78 @@ title: Credit Card Fraud Detection
 
 <style>
   body {
-    background-color: #0a0a0a;
-    color: #e5e5e5;
+    background-color: #0f0f0f;
+    color: #f0f0f0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 40px;
+    margin: 0;
+    padding: 0 20px;
   }
 
   h1, h2, h3 {
-    color: #00ffe7;
-    text-shadow: 0 0 5px #00ffe7;
+    color: #00ffff;
   }
 
-  .btn {
+  a.button {
     display: inline-block;
+    margin: 10px 0;
     padding: 12px 24px;
-    margin: 10px 8px 10px 0;
-    background: linear-gradient(90deg, #00ffe7, #0055ff);
-    color: #000;
-    font-weight: bold;
+    background: linear-gradient(90deg, #00ffff, #0088ff);
+    color: #0f0f0f;
     text-decoration: none;
     border-radius: 8px;
-    transition: 0.3s ease;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
   }
 
-  .btn:hover {
-    background: linear-gradient(90deg, #0055ff, #00ffe7);
-    color: white;
+  a.button:hover {
     transform: scale(1.05);
-  }
-
-  footer {
-    margin-top: 50px;
-    text-align: center;
-    color: #888;
-    font-size: 0.85em;
+    background: linear-gradient(90deg, #0088ff, #00ffff);
+    color: #fff;
   }
 
   code {
-    background-color: #1a1a1a;
-    color: #ffcc00;
-    padding: 4px 8px;
+    background-color: #1f1f1f;
+    padding: 2px 4px;
     border-radius: 4px;
+    color: #ffcc00;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: auto;
+    padding-top: 40px;
+  }
+
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #777;
+    font-size: 0.8em;
   }
 </style>
 
-# 💳 Credit Card Fraud Detection
+<div class="container">
+  <h1>🔍 Credit Card Fraud Detection</h1>
+  <p>Bienvenido a un proyecto de detección de fraudes con tarjetas de crédito usando machine learning.</p>
 
-Bienvenido a este proyecto de detección de fraude con tarjetas de crédito usando técnicas de machine learning.
+  <a class="button" href="https://github.com/dsd228/credit-card-fraud-detection" target="_blank">🔗 Ver Repositorio</a>
+  <a class="button" href="https://dsd228.github.io/credit-card-fraud-detection/report" target="_blank">📊 Ver Informe</a>
 
-## ⚙️ Tecnologías utilizadas
+  <h2>📌 Descripción del Proyecto</h2>
+  <p>Este proyecto aplica técnicas de ciencia de datos para identificar transacciones fraudulentas en un conjunto de datos real...</p>
 
-- Python
-- Scikit-learn
-- Pandas, NumPy
-- Matplotlib, Seaborn
+  <h3>🔧 Tecnologías usadas:</h3>
+  <ul>
+    <li>Python</li>
+    <li>Scikit-learn</li>
+    <li>Pandas / NumPy</li>
+    <li>Gráficos con Matplotlib y Seaborn</li>
+  </ul>
 
-## 📈 Resultados principales
+  <h3>📈 Resultados principales</h3>
+  <p>El modelo alcanzó un <code>Recall</code> de 91% y una <code>Precision</code> del 87% en el conjunto de validación.</p>
 
-El modelo entrenado alcanzó:
-
-- **Recall:** 91%
-- **Precisión:** 87%
-- **Modelo balanceado para minimizar falsos negativos**
-
-## 🔗 Accesos rápidos
-
-<a class="btn" href="https://github.com/dsd228/credit-card-fraud-detection" target="_blank">🔍 Ver en GitHub</a>
-<a class="btn" href="https://dsd228.github.io/credit-card-fraud-detection/report" target="_blank">📊 Ver informe</a>
-
----
-
-<footer>
-  © 2025 David Díaz – Proyecto para portafolio profesional
-</footer>
+  <footer>
+    © 2025 David Díaz – Proyecto para portafolio profesional
+  </footer>
+</div>
