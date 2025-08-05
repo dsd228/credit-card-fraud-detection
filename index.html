@@ -1,245 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Credit Card Fraud Detection · Portfolio Profesional</title>
-  
-  <!-- Dependencias CSS -->
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Credit Card Fraud Detection · Portfolio</title>
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Animate on Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
   <style>
-    :root {
-      --primary-glow: #00fff1;
-      --secondary-glow: #008cff;
-      --bg-dark: #0f2027;
-      --bg-medium: #203a43;
-      --bg-light: #2c5364;
-      --text-light: #f4f6fa;
-    }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(120deg, var(--bg-dark) 0%, var(--bg-light) 100%);
-      color: var(--text-light);
-      min-height: 100vh;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(120deg, #151f41 0%, #0f2027 100%);
+      color: #f6f8fa;
     }
     .navbar {
-      background: rgba(44, 83, 100, 0.9);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--bg-light);
+      background: rgba(15,32,39,0.99);
+      box-shadow: 0 4px 18px #00fff111;
     }
-    .hero {
-      background: linear-gradient(120deg, rgba(44,83,100,.8) 0%, rgba(15,32,39,.9) 100%);
-      border-radius: 1.5rem;
-      margin-top: 2rem;
-      padding: 4rem 2rem;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: var(--primary-glow);
-      text-shadow: 0 2px 12px var(--secondary-glow);
-      margin-bottom: 1rem;
-    }
+    .navbar-brand { font-weight: bold; font-size: 1.4rem; letter-spacing: 2px; }
+    .nav-link { color: #00fff1 !important; font-weight: 500; }
+    .nav-link:hover { color: #fff !important; }
     .section {
-      margin: 3rem 0;
-      background: rgba(44,83,100, 0.6);
-      border-radius: 1.25rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-      padding: 2.5rem 2rem;
-      transition: box-shadow .3s, transform .3s;
+      margin: 4rem 0;
+      padding: 2.5rem 1.5rem;
+      border-radius: 16px;
+      background: rgba(44,83,100,0.7);
+      box-shadow: 0 2px 20px #008cff44;
+      transition: box-shadow .2s, transform .2s;
     }
-    .section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 40px 0 #00fff188;
-    }
-    h2 {
-      margin-bottom: 1.5rem;
-      color: var(--primary-glow);
-      font-weight: 800;
-      font-size: 2.2rem;
-    }
-    .icon-title {
-      font-size: 2.5rem;
-      vertical-align: middle;
-      margin-right: 0.75rem;
-      opacity: 0.9;
-    }
-    .list-group-item {
-      background: transparent; color: var(--text-light); border: none; font-size: 1.1rem;
-    }
+    .section:hover { box-shadow: 0 6px 50px #00fff122; transform: translateY(-3px);}
+    h1, h2 { color: #00fff1; font-weight: 800;}
+    h1 { font-size: 2.4rem;}
+    h2 { font-size: 1.5rem;}
+    .icon-title { font-size:2.1rem; margin-right: .5rem; opacity: .9;}
     img.img-fluid {
       border-radius: 1rem;
       margin: 1.5rem 0;
-      box-shadow: 0 4px 20px #00000099;
-      max-width: 100%;
-      height: auto;
+      box-shadow: 0 2px 16px #00fff180;
       transition: transform .3s, box-shadow .3s;
     }
     img.img-fluid:hover {
-        transform: scale(1.03);
-        box-shadow: 0 6px 32px var(--primary-glow);
+      transform: scale(1.04);
+      box-shadow: 0 6px 32px #00fff1cc;
     }
+    .metric[data-bs-toggle="tooltip"] { cursor: help; border-bottom: 2px dotted #00fff1; }
     .btn-primary {
-      background: linear-gradient(120deg, var(--primary-glow) 0%, var(--secondary-glow) 100%);
-      border: none; font-weight: 700; color: var(--bg-dark);
+      background: linear-gradient(120deg, #00fff1 0%, #008cff 100%);
+      border: none; font-weight: 700; color: #222;
       box-shadow: 0 2px 12px #008cff88;
-      transition: all .3s;
     }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 20px #008cff;
-    }
-    .metric {
-        cursor: help;
-        border-bottom: 2px dotted var(--primary-glow);
-    }
+    .btn-primary:hover { background: linear-gradient(120deg, #008cff 0%, #00fff1 100%); color: #fff;}
     footer {
-      background: rgba(15,32,39,0.99); color: var(--primary-glow);
+      background: rgba(15,32,39,0.99); color: #00fff1;
       padding: 2rem 0; text-align: center;
-      border-top: 1px solid var(--primary-glow);
-      margin-top: 4rem; font-size: 1.15rem; font-weight: 500;
+      border-top: 1px solid #00fff1;
+      font-size: 1.1rem; font-weight: 500;
+      margin-top: 3rem;
     }
-    a { color: var(--primary-glow); text-decoration: none; border-bottom: 1px dotted; }
-    a:hover { color: white; }
-    @media (max-width: 768px) {
-      .hero { padding: 2rem 1rem; }
-      .section { padding: 1.5rem 1rem; }
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.5rem; }
+    a { color: #00fff1; }
+    a:hover { color: #fff; }
+    @media (max-width: 800px) {
+      .section {padding: 1.1rem; margin: 2rem 0;}
+      h1 {font-size:1.5rem;}
+      h2 {font-size:1.1rem;}
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#"><i class="fas fa-shield-alt"></i> CreditFraud AI</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#datos">Datos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#analisis">Análisis</a></li>
-          <li class="nav-item"><a class="nav-link" href="#modelos">Modelos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#resultados">Resultados</a></li>
-          <li class="nav-item"><a class="nav-link" href="#conclusion">Conclusión</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" data-aos="zoom-in">
-    <div class="container">
-      <h1>Credit Card Fraud Detection</h1>
-      <p class="lead">Un proyecto de Machine Learning para la detección de transacciones fraudulentas en tiempo real, utilizando un dataset público y técnicas avanzadas de modelado.</p>
-      <a href="https://github.com/dsd228/credit-card-fraud-detection" class="btn btn-primary btn-lg mt-3" target="_blank"><i class="fab fa-github"></i> Ver Código en GitHub</a>
-    </div>
-  </section>
-
-  <!-- Datos -->
-  <section class="section" id="datos" data-aos="fade-up">
-    <div class="container">
-      <h2><i class="fas fa-database icon-title"></i>El Dataset</h2>
-      <p>El proyecto utiliza el dataset <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">"Credit Card Fraud Detection" de Kaggle</a>. Contiene <strong>284,807 transacciones</strong>, de las cuales solo <strong>492 (0.172%)</strong> son fraudulentas. Este severo desbalance de clases es el principal desafío del problema.</p>
-      <img src="assets/visuals/class_distribution.png" alt="Gráfico de distribución de clases mostrando el desbalance entre transacciones normales y fraudulentas" class="img-fluid" data-aos="fade-up" />
-    </div>
-  </section>
-
-  <!-- Análisis -->
-  <section class="section" id="analisis" data-aos="fade-up">
-    <div class="container">
-      <h2><i class="fas fa-chart-bar icon-title"></i>Análisis Exploratorio (EDA)</h2>
-      <p>El análisis inicial reveló que las variables (V1-V28, resultado de PCA) no tienen correlaciones obvias, y que los montos de transacciones fraudulentas tienden a ser más bajos. Visualizar los datos en 2D con PCA ayuda a ver una ligera separación entre clases.</p>
-      <div class="row">
-        <div class="col-md-6" data-aos="fade-right">
-            <img src="assets/visuals/amount_distribution.png" alt="Histograma de montos de transacciones" class="img-fluid" />
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
-            <img src="assets/visuals/pca_scatter.png" alt="Visualización PCA de transacciones" class="img-fluid" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Modelos -->
-  <section class="section" id="modelos" data-aos="fade-up">
-    <div class="container">
-      <h2><i class="fas fa-robot icon-title"></i>Modelado y Estrategia</h2>
-      <p>Se probaron varios algoritmos, pero <strong>Random Forest</strong> demostró ser el más efectivo. Para manejar el desbalance de clases, se aplicó la técnica <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong> en el set de entrenamiento.</p>
-    </div>
-  </section>
-
-  <!-- Resultados -->
-  <section class="section" id="resultados" data-aos="fade-up">
-    <div class="container">
-      <h2><i class="fas fa-chart-line icon-title"></i>Resultados del Modelo</h2>
-      <p>El modelo Random Forest con SMOTE alcanzó un rendimiento excelente en el conjunto de prueba:</p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong class="metric" data-bs-toggle="tooltip" title="Porcentaje de predicciones correctas del total. No es ideal para datasets desbalanceados.">Accuracy:</strong> 99.95%</li>
-        <li class="list-group-item"><strong class="metric" data-bs-toggle="tooltip" title="De todos los fraudes reales, ¿cuántos detectamos? La métrica más importante para este problema.">Recall (Sensibilidad):</strong> 89%</li>
-        <li class="list-group-item"><strong class="metric" data-bs-toggle="tooltip" title="De todo lo que dijimos que era fraude, ¿cuánto realmente lo fue?">Precision:</strong> 92%</li>
-        <li class="list-group-item"><strong class="metric" data-bs-toggle="tooltip" title="Media armónica de Precision y Recall. Buen indicador general.">F1-Score:</strong> 0.90</li>
-        <li class="list-group-item"><strong class="metric" data-bs-toggle="tooltip" title="Área Bajo la Curva ROC. Mide qué tan bien el modelo distingue entre clases.">ROC-AUC:</strong> 0.97</li>
-      </ul>
-      <div class="row mt-4">
-        <div class="col-md-6" data-aos="fade-right">
-          <img src="assets/visuals/confusion_matrix.png" alt="Matriz de confusión del modelo Random Forest" class="img-fluid" />
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
-          <img src="assets/visuals/roc_curve.png" alt="Curva ROC del modelo" class="img-fluid" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Conclusión -->
-  <section class="section" id="conclusion" data-aos="fade-up">
-    <div class="container">
-      <h2><i class="fas fa-lightbulb icon-title"></i>Conclusión y Próximos Pasos</h2>
-      <p>El modelo es altamente eficaz, pero siempre hay espacio para mejorar. Los próximos pasos podrían incluir:</p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Explainability (XAI):</strong> Usar SHAP para entender las predicciones.</li>
-        <li class="list-group-item"><strong>Modelos más complejos:</strong> Probar redes neuronales (LSTM) para capturar secuencias.</li>
-        <li class="list-group-item"><strong>Deployment:</strong> Empaquetar el modelo en una API para predicciones en tiempo real.</li>
+<!-- Navbar Sticky -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="fas fa-shield-alt"></i>Fraude CC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#intro">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#analisis">Análisis</a></li>
+        <li class="nav-item"><a class="nav-link" href="#modelo">Modelo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#resultados">Resultados</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
       </ul>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>Diseñado y desarrollado por <a href="https://github.com/dsd228" target="_blank">David Díaz</a> · <span id="year"></span></p>
-    </div>
-  </footer>
+<!-- Intro -->
+<section class="section" id="intro" data-aos="zoom-in">
+  <div class="container">
+    <h1><i class="fas fa-credit-card icon-title"></i> Credit Card Fraud Detection</h1>
+    <p>
+      Proyecto interdisciplinario de Machine Learning para detectar transacciones fraudulentas.<br>
+      Dataset público de <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">Kaggle</a>. Resultados auditados y visualizados.
+    </p>
+    <a href="https://github.com/dsd228/credit-card-fraud-detection" class="btn btn-primary mt-3" target="_blank"><i class="fab fa-github"></i> Ver código</a>
+    <a href="https://colab.research.google.com/github/dsd228/credit-card-fraud-detection/blob/main/notebooks/eda_fraud.ipynb" class="btn btn-primary mt-3" target="_blank"><i class="fab fa-google"></i> Ver notebook</a>
+  </div>
+</section>
 
-  <!-- Scripts JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Inicializar AOS (Animate on Scroll)
-    AOS.init({
-      duration: 800,
-      once: true
-    });
+<!-- Análisis -->
+<section class="section" id="analisis" data-aos="fade-up">
+  <div class="container">
+    <h2><i class="fas fa-chart-bar icon-title"></i> Análisis Exploratorio</h2>
+    <p>
+      El dataset contiene <b>284,807 transacciones</b>, de las cuales <b>492</b> son fraude (<b>0.172%</b>). 
+      El mayor reto es el <b>desbalance de clases</b>.
+    </p>
+    <img src="assets/class_distribution.png" alt="Distribución de fraude" class="img-fluid"/>
+    <img src="assets/amount_distribution.png" alt="Histograma de montos" class="img-fluid"/>
+    <img src="assets/pca_scatter.png" alt="PCA 2D" class="img-fluid"/>
+  </div>
+</section>
 
-    // Inicializar Tooltips de Bootstrap
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+<!-- Modelo -->
+<section class="section" id="modelo" data-aos="fade-up">
+  <div class="container">
+    <h2><i class="fas fa-robot icon-title"></i> Algoritmos y Estrategia</h2>
+    <p>Se probaron <b>Random Forest</b>, <b>XGBoost</b>, <b>MLP</b> y <b>Regresión Logística</b>. El balanceo se realizó con <b>SMOTE</b>.</p>
+  </div>
+</section>
 
-    // Año dinámico en el footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+<!-- Resultados -->
+<section class="section" id="resultados" data-aos="fade-up">
+  <div class="container">
+    <h2><i class="fas fa-chart-line icon-title"></i> Resultados</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><span class="metric" data-bs-toggle="tooltip" title="Porcentaje de aciertos globales.">Accuracy:</span> <b>99.95%</b></li>
+      <li class="list-group-item"><span class="metric" data-bs-toggle="tooltip" title="Fraudes capturados sobre el total real.">Recall:</span> <b>89%</b></li>
+      <li class="list-group-item"><span class="metric" data-bs-toggle="tooltip" title="Predicciones correctas sobre lo que predijo como fraude.">Precision:</span> <b>92%</b></li>
+      <li class="list-group-item"><span class="metric" data-bs-toggle="tooltip" title="Promedio armónico entre precision y recall.">F1-Score:</span> <b>0.90</b></li>
+      <li class="list-group-item"><span class="metric" data-bs-toggle="tooltip" title="Área bajo la curva ROC.">ROC-AUC:</span> <b>0.97</b></li>
+    </ul>
+    <img src="assets/confusion_matrix.png" alt="Matriz de confusión" class="img-fluid"/>
+
+
