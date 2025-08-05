@@ -192,6 +192,37 @@
       </div>
     </div>
   </section>
+  <!-- Sección Interactiva con Plotly.js -->
+<section class="section" id="interactivo">
+  <div class="container">
+    <h2 class="text-center mb-4"><i class="fas fa-chart-pie icon-title"></i> Gráfico Interactivo</h2>
+    <p class="text-center mb-4">
+      Explora la distribución de fraudes vs transacciones normales de manera interactiva.
+    </p>
+    <div id="plotly-interactive" style="height:400px;"></div>
+  </div>
+</section>
+
+<!-- Incluye Plotly.js al final del body si aún no lo tienes -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  // Gráfico interactivo de distribución de clases
+  var data = [{
+    values: [284315, 492],
+    labels: ['No Fraude', 'Fraude'],
+    type: 'pie',
+    marker: { colors: ['#00fff1','#ff4b5c'] }
+  }];
+
+  var layout = {
+    title: 'Distribución de Clases en el Dataset',
+    paper_bgcolor: 'rgba(44,83,100,0.9)',
+    font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+    showlegend: true
+  };
+
+  Plotly.newPlot('plotly-interactive', data, layout, {responsive: true});
+</script>
 
   <!-- Modelos -->
   <section class="section" id="modelos">
