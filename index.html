@@ -569,6 +569,71 @@ document.getElementById('grafico-selector').addEventListener('change', function(
 
   <!-- Modelos -->
   <section class="section" id="modelos">
+  <div class="container">
+    <h2 class="text-center mb-4"><i class="fas fa-robot icon-title"></i> Modelos Machine Learning</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+      <div class="col">
+        <div class="card h-100 bg-dark text-white shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-chart-line text-info me-2"></i>Regresión Logística</h5>
+            <p class="card-text">Modelo lineal sencillo, útil como baseline y para interpretar coeficientes.</p>
+            <span class="badge bg-secondary">Interpretabilidad alta</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 bg-dark text-white shadow border border-warning">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-tree text-success me-2"></i>Random Forest <span class="badge bg-warning text-dark ms-2">Mejor desempeño</span></h5>
+            <p class="card-text">Ensamble de árboles de decisión, robusto ante datos desbalanceados y outliers.</p>
+            <span class="badge bg-success">Detección precisa</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 bg-dark text-white shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bolt text-warning me-2"></i>XGBoost</h5>
+            <p class="card-text">Algoritmo de boosting, destaca en competiciones y manejo de desbalance.</p>
+            <span class="badge bg-warning">Optimización avanzada</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 bg-dark text-white shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-brain text-info me-2"></i>Red Neuronal (MLP)</h5>
+            <p class="card-text">Modelo sencillo de red neuronal, puede capturar relaciones no lineales.</p>
+            <span class="badge bg-info">Flexibilidad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <h5 class="mb-2"><i class="fas fa-tasks text-info"></i> Métricas clave:</h5>
+      <ul class="list-inline">
+        <li class="list-inline-item" data-bs-toggle="tooltip" title="Porcentaje de aciertos totales">Accuracy</li>
+        <li class="list-inline-item" data-bs-toggle="tooltip" title="Proporción de fraudes correctamente identificados">Recall</li>
+        <li class="list-inline-item" data-bs-toggle="tooltip" title="Precisión en las predicciones de fraude">Precision</li>
+        <li class="list-inline-item" data-bs-toggle="tooltip" title="Equilibrio entre Recall y Precision">F1-score</li>
+        <li class="list-inline-item" data-bs-toggle="tooltip" title="Área bajo la curva ROC, mide el poder de discriminación">ROC-AUC</li>
+      </ul>
+      <small class="text-secondary d-block mb-2">Pasa el mouse sobre cada métrica para ver su definición.</small>
+      <h5 class="mb-2"><i class="fas fa-balance-scale text-info"></i> Técnicas de balanceo:</h5>
+      <span class="badge bg-info">SMOTE</span>
+      <span class="badge bg-info">Undersampling</span>
+    </div>
+  </div>
+</section>
+<script>
+  // Bootstrap tooltips
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+  <section class="section" id="modelos">
     <div class="container">
       <h2><i class="fas fa-robot icon-title"></i>Modelos Machine Learning</h2>
       <p>
