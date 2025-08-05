@@ -86,6 +86,121 @@ document.getElementById('grafico-right').addEventListener('change', function() {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+const explicaciones = {
+  pie: "Este gráfico muestra la proporción de transacciones fraudulentas frente a las normales. Es útil para visualizar el desbalance de clases en el dataset.",
+  hist: "El histograma representa la distribución de los montos de transacciones. Ayuda a detectar outliers y patrones en los valores.",
+  roc: "La curva ROC evalúa el rendimiento del modelo clasificando entre fraude y no fraude. Un área bajo la curva (AUC) cercana a 1 indica un buen desempeño."
+};
+
+function mostrarExplicacion(side, tipo) {
+  document.getElementById('explicacion-' + side).textContent = explicaciones[tipo] || '';
+}
+
+function getGraphData(type) {
+  if (type === 'pie') {
+    return {
+      data: [{
+        values: [284315, 492],
+        labels: ['No Fraude', 'Fraude'],
+        type: 'pie',
+        marker: { colors: ['#00fff1','#ff4b5c'] }
+      }],
+      layout: {
+        title: 'Distribución de Clases en el Dataset',
+        paper_bgcolor: 'rgba(44,83,100,0.9)',
+        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+        showlegend: true
+      }
+    };
+  } else if (type === 'hist') {
+    return {
+      data: [{
+        x: [12, 15, 32, 60, 80, 99, 120, 150, 170, 200, 220, 300, 360, 410, 510, 600, 1000, 1500, 2000],
+        type: 'histogram',
+        marker: { color: '#00fff1' }
+      }],
+      layout: {
+        title: 'Histograma de Montos',
+        paper_bgcolor: 'rgba(44,83,100,0.9)',
+        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+        xaxis: { title: 'Monto de la transacción' },
+        yaxis: { title: 'Frecuencia' }
+      }
+    };
+  } else if (type === 'roc') {
+    return {
+      data: [
+        {
+          x: [0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1],
+          y: [0, 0.6, 0.8, 0.87, 0.92, 0.97, 0.99, 1],
+          type: 'scatter',
+          mode: 'lines+markers',
+          name: 'ROC Curve',
+          line: { color: '#00fff1' }
+        },
+        {
+          x: [0,1],
+          y: [0,1],
+          type: 'scatter',
+          mode: 'lines',
+          name: 'Random',
+          line: { dash: 'dot', color: '#888' }
+        }
+      ],
+      layout: {
+        title: 'Curva ROC Interactiva',
+        paper_bgcolor: 'rgba(44,83,100,0.9)',
+        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+        xaxis: { title: 'False Positive Rate' },
+        yaxis: { title: 'True Positive Rate' },
+        showlegend: true
+      }
+    };
+  }
+}
+
+// Inicializa ambos gráficos y explicaciones
+function drawGraph(side, type) {
+  const config = getGraphData(type);
+  Plotly.newPlot(`plotly-${side}`, config.data, config.layout, {responsive:true});
+  mostrarExplicacion(side, type);
+}
+drawGraph('left', document.getElementById('grafico-left').value);
+drawGraph('right', document.getElementById('grafico-right').value);
+
+// Listeners para cambios
+document.getElementById('grafico-left').addEventListener('change', function() {
+  drawGraph('left', this.value);
+});
+document.getElementById('grafico-right').addEventListener('change', function() {
+  drawGraph('right', this.value);
+});
+
+// Sincronización de ejes (zoom/pan) entre paneles
+let syncActive = false;
+document.getElementById('sync-ejes').addEventListener('click', function() {
+  syncActive = !syncActive;
+  document.getElementById('sync-status').textContent = syncActive ? 'Sincronización activada' : 'Sincronización desactivada';
+  if (syncActive) {
+    // Sincroniza cada vez que hay zoom/pan en cualquiera de los gráficos
+    Plotly.d3.selectAll('#plotly-left, #plotly-right').on('plotly_relayout', function(event) {
+      const source = this.id;
+      const target = source === 'plotly-left' ? 'plotly-right' : 'plotly-left';
+      // Solo sincroniza si ambos gráficos son del mismo tipo y no son pie (solo para hist y roc)
+      const leftType = document.getElementById('grafico-left').value;
+      const rightType = document.getElementById('grafico-right').value;
+      if (leftType === rightType && leftType !== 'pie') {
+        Plotly.relayout(target, event.detail);
+      }
+    });
+  } else {
+    // Elimina el evento
+    Plotly.d3.selectAll('#plotly-left, #plotly-right').on('plotly_relayout', null);
+  }
+});
+</script>
     body {
       font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
       background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
@@ -323,6 +438,44 @@ document.getElementById('grafico-selector').addEventListener('change', function(
       <img src="assets/visuals/class_distribution.png" alt="Gráfico de distribución de clases: mayoría No Fraude, minoría Fraude" class="img-fluid" />
     </div>
   </section>
+  <section class="section" id="comparacion">
+  <div class="container">
+    <h2 class="text-center mb-4"><i class="fas fa-object-group icon-title"></i> Comparar Gráficos Interactivos</h2>
+    <p class="text-center mb-4">
+      Elige dos gráficos y compáralos lado a lado de forma interactiva. Puedes sincronizar el zoom y la navegación.
+    </p>
+    <div class="row mb-4 justify-content-center">
+      <div class="col-md-5 mb-3">
+        <label class="form-label fw-bold" for="grafico-left">Gráfico izquierdo</label>
+        <select id="grafico-left" class="form-select form-select-lg">
+          <option value="pie" selected>Distribución de Clases</option>
+          <option value="hist">Histograma de Montos</option>
+          <option value="roc">Curva ROC</option>
+        </select>
+        <div id="explicacion-left" class="mt-2 text-secondary" style="min-height:48px;"></div>
+        <div id="plotly-left" style="height:400px;"></div>
+      </div>
+      <div class="col-md-5 mb-3">
+        <label class="form-label fw-bold" for="grafico-right">Gráfico derecho</label>
+        <select id="grafico-right" class="form-select form-select-lg">
+          <option value="pie">Distribución de Clases</option>
+          <option value="hist" selected>Histograma de Montos</option>
+          <option value="roc">Curva ROC</option>
+        </select>
+        <div id="explicacion-right" class="mt-2 text-secondary" style="min-height:48px;"></div>
+        <div id="plotly-right" style="height:400px;"></div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-md-10 text-end">
+        <button id="sync-ejes" class="btn btn-outline-info">
+          <i class="fas fa-link"></i> Sincronizar Zoom/Navegación
+        </button>
+        <span id="sync-status" class="ms-2 text-info"></span>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Análisis visual y notebook destacado -->
   <section id="analisis" class="section">
