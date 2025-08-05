@@ -1,206 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-function getGraphData(type) {
-  if (type === 'pie') {
-    return {
-      data: [{
-        values: [284315, 492],
-        labels: ['No Fraude', 'Fraude'],
-        type: 'pie',
-        marker: { colors: ['#00fff1','#ff4b5c'] }
-      }],
-      layout: {
-        title: 'Distribución de Clases en el Dataset',
-        paper_bgcolor: 'rgba(44,83,100,0.9)',
-        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-        showlegend: true
-      }
-    };
-  } else if (type === 'hist') {
-    return {
-      data: [{
-        x: [12, 15, 32, 60, 80, 99, 120, 150, 170, 200, 220, 300, 360, 410, 510, 600, 1000, 1500, 2000],
-        type: 'histogram',
-        marker: { color: '#00fff1' }
-      }],
-      layout: {
-        title: 'Histograma de Montos',
-        paper_bgcolor: 'rgba(44,83,100,0.9)',
-        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' }
-      }
-    };
-  } else if (type === 'roc') {
-    return {
-      data: [
-        {
-          x: [0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1],
-          y: [0, 0.6, 0.8, 0.87, 0.92, 0.97, 0.99, 1],
-          type: 'scatter',
-          mode: 'lines+markers',
-          name: 'ROC Curve',
-          line: { color: '#00fff1' }
-        },
-        {
-          x: [0,1],
-          y: [0,1],
-          type: 'scatter',
-          mode: 'lines',
-          name: 'Random',
-          line: { dash: 'dot', color: '#888' }
-        }
-      ],
-      layout: {
-        title: 'Curva ROC Interactiva',
-        paper_bgcolor: 'rgba(44,83,100,0.9)',
-        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-        showlegend: true
-      }
-    };
-  }
-}
-
-// Inicializa ambos gráficos
-function drawGraph(side, type) {
-  const config = getGraphData(type);
-  Plotly.newPlot(`plotly-${side}`, config.data, config.layout, {responsive:true});
-}
-
-// Inicialización al cargar
-drawGraph('left', document.getElementById('grafico-left').value);
-drawGraph('right', document.getElementById('grafico-right').value);
-
-// Listeners para cambios
-document.getElementById('grafico-left').addEventListener('change', function() {
-  drawGraph('left', this.value);
-});
-document.getElementById('grafico-right').addEventListener('change', function() {
-  drawGraph('right', this.value);
-});
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Credit Card Fraud Detection · Portfolio Profesional</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-const explicaciones = {
-  pie: "Este gráfico muestra la proporción de transacciones fraudulentas frente a las normales. Es útil para visualizar el desbalance de clases en el dataset.",
-  hist: "El histograma representa la distribución de los montos de transacciones. Ayuda a detectar outliers y patrones en los valores.",
-  roc: "La curva ROC evalúa el rendimiento del modelo clasificando entre fraude y no fraude. Un área bajo la curva (AUC) cercana a 1 indica un buen desempeño."
-};
-
-function mostrarExplicacion(side, tipo) {
-  document.getElementById('explicacion-' + side).textContent = explicaciones[tipo] || '';
-}
-
-function getGraphData(type) {
-  if (type === 'pie') {
-    return {
-      data: [{
-        values: [284315, 492],
-        labels: ['No Fraude', 'Fraude'],
-        type: 'pie',
-        marker: { colors: ['#00fff1','#ff4b5c'] }
-      }],
-      layout: {
-        title: 'Distribución de Clases en el Dataset',
-        paper_bgcolor: 'rgba(44,83,100,0.9)',
-        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-        showlegend: true
-      }
-    };
-  } else if (type === 'hist') {
-    return {
-      data: [{
-        x: [12, 15, 32, 60, 80, 99, 120, 150, 170, 200, 220, 300, 360, 410, 510, 600, 1000, 1500, 2000],
-        type: 'histogram',
-        marker: { color: '#00fff1' }
-      }],
-      layout: {
-        title: 'Histograma de Montos',
-        paper_bgcolor: 'rgba(44,83,100,0.9)',
-        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-        xaxis: { title: 'Monto de la transacción' },
-        yaxis: { title: 'Frecuencia' }
-      }
-    };
-  } else if (type === 'roc') {
-    return {
-      data: [
-        {
-          x: [0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1],
-          y: [0, 0.6, 0.8, 0.87, 0.92, 0.97, 0.99, 1],
-          type: 'scatter',
-          mode: 'lines+markers',
-          name: 'ROC Curve',
-          line: { color: '#00fff1' }
-        },
-        {
-          x: [0,1],
-          y: [0,1],
-          type: 'scatter',
-          mode: 'lines',
-          name: 'Random',
-          line: { dash: 'dot', color: '#888' }
-        }
-      ],
-      layout: {
-        title: 'Curva ROC Interactiva',
-        paper_bgcolor: 'rgba(44,83,100,0.9)',
-        font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-        xaxis: { title: 'False Positive Rate' },
-        yaxis: { title: 'True Positive Rate' },
-        showlegend: true
-      }
-    };
-  }
-}
-
-// Inicializa ambos gráficos y explicaciones
-function drawGraph(side, type) {
-  const config = getGraphData(type);
-  Plotly.newPlot(`plotly-${side}`, config.data, config.layout, {responsive:true});
-  mostrarExplicacion(side, type);
-}
-drawGraph('left', document.getElementById('grafico-left').value);
-drawGraph('right', document.getElementById('grafico-right').value);
-
-// Listeners para cambios
-document.getElementById('grafico-left').addEventListener('change', function() {
-  drawGraph('left', this.value);
-});
-document.getElementById('grafico-right').addEventListener('change', function() {
-  drawGraph('right', this.value);
-});
-
-// Sincronización de ejes (zoom/pan) entre paneles
-let syncActive = false;
-document.getElementById('sync-ejes').addEventListener('click', function() {
-  syncActive = !syncActive;
-  document.getElementById('sync-status').textContent = syncActive ? 'Sincronización activada' : 'Sincronización desactivada';
-  if (syncActive) {
-    // Sincroniza cada vez que hay zoom/pan en cualquiera de los gráficos
-    Plotly.d3.selectAll('#plotly-left, #plotly-right').on('plotly_relayout', function(event) {
-      const source = this.id;
-      const target = source === 'plotly-left' ? 'plotly-right' : 'plotly-left';
-      // Solo sincroniza si ambos gráficos son del mismo tipo y no son pie (solo para hist y roc)
-      const leftType = document.getElementById('grafico-left').value;
-      const rightType = document.getElementById('grafico-right').value;
-      if (leftType === rightType && leftType !== 'pie') {
-        Plotly.relayout(target, event.detail);
-      }
-    });
-  } else {
-    // Elimina el evento
-    Plotly.d3.selectAll('#plotly-left, #plotly-right').on('plotly_relayout', null);
-  }
-});
-</script>
     body {
       font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
       background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
@@ -300,71 +107,6 @@ document.getElementById('sync-ejes').addEventListener('click', function() {
     }
   </style>
 </head>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-function mostrarGrafico(tipo) {
-  let data, layout;
-  if (tipo === 'pie') {
-    data = [{
-      values: [284315, 492],
-      labels: ['No Fraude', 'Fraude'],
-      type: 'pie',
-      marker: { colors: ['#00fff1','#ff4b5c'] }
-    }];
-    layout = {
-      title: 'Distribución de Clases en el Dataset',
-      paper_bgcolor: 'rgba(44,83,100,0.9)',
-      font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-      showlegend: true
-    };
-  } else if (tipo === 'hist') {
-    data = [{
-      x: [12, 15, 32, 60, 80, 99, 120, 150, 170, 200, 220, 300, 360, 410, 510, 600, 1000, 1500, 2000],
-      type: 'histogram',
-      marker: { color: '#00fff1' }
-    }];
-    layout = {
-      title: 'Histograma de Montos',
-      paper_bgcolor: 'rgba(44,83,100,0.9)',
-      font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' }
-    };
-  } else if (tipo === 'roc') {
-    data = [
-      {
-        x: [0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1],
-        y: [0, 0.6, 0.8, 0.87, 0.92, 0.97, 0.99, 1],
-        type: 'scatter',
-        mode: 'lines+markers',
-        name: 'ROC Curve',
-        line: { color: '#00fff1' }
-      },
-      {
-        x: [0,1],
-        y: [0,1],
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Random',
-        line: { dash: 'dot', color: '#888' }
-      }
-    ];
-    layout = {
-      title: 'Curva ROC Interactiva',
-      paper_bgcolor: 'rgba(44,83,100,0.9)',
-      font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-      showlegend: true
-    };
-  }
-  Plotly.newPlot('plotly-interactive', data, layout, {responsive: true});
-}
-
-// Inicializa con el gráfico pie
-mostrarGrafico('pie');
-
-// Cambia el gráfico cuando el usuario selecciona
-document.getElementById('grafico-selector').addEventListener('change', function() {
-  mostrarGrafico(this.value);
-});
-</script>
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark">
@@ -393,34 +135,6 @@ document.getElementById('grafico-selector').addEventListener('change', function(
       <a href="https://github.com/dsd228/credit-card-fraud-detection" class="btn btn-primary btn-lg mt-3" target="_blank"><i class="fab fa-github"></i> Ver Código</a>
     </div>
   </section>
-  <section class="section" id="comparacion">
-  <div class="container">
-    <h2 class="text-center mb-4"><i class="fas fa-object-group icon-title"></i> Comparar Gráficos Interactivos</h2>
-    <p class="text-center mb-4">
-      Elige dos gráficos y compáralos lado a lado de forma interactiva.
-    </p>
-    <div class="row mb-4 justify-content-center">
-      <div class="col-md-5 mb-3">
-        <label class="form-label fw-bold" for="grafico-left">Gráfico izquierdo</label>
-        <select id="grafico-left" class="form-select form-select-lg">
-          <option value="pie" selected>Distribución de Clases</option>
-          <option value="hist">Histograma de Montos</option>
-          <option value="roc">Curva ROC</option>
-        </select>
-        <div id="plotly-left" style="height:400px;"></div>
-      </div>
-      <div class="col-md-5 mb-3">
-        <label class="form-label fw-bold" for="grafico-right">Gráfico derecho</label>
-        <select id="grafico-right" class="form-select form-select-lg">
-          <option value="pie">Distribución de Clases</option>
-          <option value="hist" selected>Histograma de Montos</option>
-          <option value="roc">Curva ROC</option>
-        </select>
-        <div id="plotly-right" style="height:400px;"></div>
-      </div>
-    </div>
-  </div>
-</section>
 
   <!-- Datos -->
   <section class="section" id="datos">
@@ -438,44 +152,46 @@ document.getElementById('grafico-selector').addEventListener('change', function(
       <img src="assets/visuals/class_distribution.png" alt="Gráfico de distribución de clases: mayoría No Fraude, minoría Fraude" class="img-fluid" />
     </div>
   </section>
+
+  <!-- Sección avanzada de comparación de gráficos -->
   <section class="section" id="comparacion">
-  <div class="container">
-    <h2 class="text-center mb-4"><i class="fas fa-object-group icon-title"></i> Comparar Gráficos Interactivos</h2>
-    <p class="text-center mb-4">
-      Elige dos gráficos y compáralos lado a lado de forma interactiva. Puedes sincronizar el zoom y la navegación.
-    </p>
-    <div class="row mb-4 justify-content-center">
-      <div class="col-md-5 mb-3">
-        <label class="form-label fw-bold" for="grafico-left">Gráfico izquierdo</label>
-        <select id="grafico-left" class="form-select form-select-lg">
-          <option value="pie" selected>Distribución de Clases</option>
-          <option value="hist">Histograma de Montos</option>
-          <option value="roc">Curva ROC</option>
-        </select>
-        <div id="explicacion-left" class="mt-2 text-secondary" style="min-height:48px;"></div>
-        <div id="plotly-left" style="height:400px;"></div>
+    <div class="container">
+      <h2 class="text-center mb-4"><i class="fas fa-object-group icon-title"></i> Comparar Gráficos Interactivos</h2>
+      <p class="text-center mb-4">
+        Elige dos gráficos y compáralos lado a lado de forma interactiva. Puedes <b>sincronizar el zoom y la navegación</b>.
+      </p>
+      <div class="row mb-4 justify-content-center">
+        <div class="col-md-5 mb-3">
+          <label class="form-label fw-bold" for="grafico-left">Gráfico izquierdo</label>
+          <select id="grafico-left" class="form-select form-select-lg" aria-label="Selector gráfico izquierdo">
+            <option value="pie" selected>Distribución de Clases</option>
+            <option value="hist">Histograma de Montos</option>
+            <option value="roc">Curva ROC</option>
+          </select>
+          <div id="explicacion-left" class="mt-2 text-secondary" style="min-height:48px;"></div>
+          <div id="plotly-left" style="height:400px;"></div>
+        </div>
+        <div class="col-md-5 mb-3">
+          <label class="form-label fw-bold" for="grafico-right">Gráfico derecho</label>
+          <select id="grafico-right" class="form-select form-select-lg" aria-label="Selector gráfico derecho">
+            <option value="pie">Distribución de Clases</option>
+            <option value="hist" selected>Histograma de Montos</option>
+            <option value="roc">Curva ROC</option>
+          </select>
+          <div id="explicacion-right" class="mt-2 text-secondary" style="min-height:48px;"></div>
+          <div id="plotly-right" style="height:400px;"></div>
+        </div>
       </div>
-      <div class="col-md-5 mb-3">
-        <label class="form-label fw-bold" for="grafico-right">Gráfico derecho</label>
-        <select id="grafico-right" class="form-select form-select-lg">
-          <option value="pie">Distribución de Clases</option>
-          <option value="hist" selected>Histograma de Montos</option>
-          <option value="roc">Curva ROC</option>
-        </select>
-        <div id="explicacion-right" class="mt-2 text-secondary" style="min-height:48px;"></div>
-        <div id="plotly-right" style="height:400px;"></div>
+      <div class="row justify-content-center mb-2">
+        <div class="col-md-10 text-end">
+          <button id="sync-ejes" class="btn btn-outline-info" aria-label="Sincronizar ejes">
+            <i class="fas fa-link"></i> Sincronizar Zoom/Navegación
+          </button>
+          <span id="sync-status" class="ms-2 text-info"></span>
+        </div>
       </div>
     </div>
-    <div class="row justify-content-center mb-2">
-      <div class="col-md-10 text-end">
-        <button id="sync-ejes" class="btn btn-outline-info">
-          <i class="fas fa-link"></i> Sincronizar Zoom/Navegación
-        </button>
-        <span id="sync-status" class="ms-2 text-info"></span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Análisis visual y notebook destacado -->
   <section id="analisis" class="section">
@@ -517,138 +233,63 @@ document.getElementById('grafico-selector').addEventListener('change', function(
       </div>
     </div>
   </section>
-  <!-- Sección Interactiva con Plotly.js -->
-<section class="section" id="interactivo">
-  <div class="container">
-    <h2 class="text-center mb-4"><i class="fas fa-chart-pie icon-title"></i> Gráfico Interactivo</h2>
-    <p class="text-center mb-4">
-      Explora la distribución de fraudes vs transacciones normales de manera interactiva.
-    </p>
-    <div id="plotly-interactive" style="height:400px;"></div>
-  </div>
-</section>
-
-<!-- Incluye Plotly.js al final del body si aún no lo tienes -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script>
-  // Gráfico interactivo de distribución de clases
-  var data = [{
-    values: [284315, 492],
-    labels: ['No Fraude', 'Fraude'],
-    type: 'pie',
-    marker: { colors: ['#00fff1','#ff4b5c'] }
-  }];
-
-  var layout = {
-    title: 'Distribución de Clases en el Dataset',
-    paper_bgcolor: 'rgba(44,83,100,0.9)',
-    font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
-    showlegend: true
-  };
-
-  Plotly.newPlot('plotly-interactive', data, layout, {responsive: true});
-</script>
-  <section class="section" id="interactivo">
-  <div class="container">
-    <h2 class="text-center mb-4"><i class="fas fa-chart-pie icon-title"></i> Gráficos Interactivos</h2>
-    <p class="text-center mb-4">
-      Selecciona el gráfico que deseas visualizar.
-    </p>
-    <div class="row justify-content-center mb-3">
-      <div class="col-md-6 col-lg-4">
-        <select id="grafico-selector" class="form-select form-select-lg mb-3">
-          <option value="pie" selected>Distribución de Clases</option>
-          <option value="hist">Histograma de Montos</option>
-          <option value="roc">Curva ROC</option>
-        </select>
-      </div>
-    </div>
-    <div id="plotly-interactive" style="height:400px;"></div>
-  </div>
-</section>
 
   <!-- Modelos -->
   <section class="section" id="modelos">
-  <div class="container">
-    <h2 class="text-center mb-4"><i class="fas fa-robot icon-title"></i> Modelos Machine Learning</h2>
-    <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
-      <div class="col">
-        <div class="card h-100 bg-dark text-white shadow">
-          <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-chart-line text-info me-2"></i>Regresión Logística</h5>
-            <p class="card-text">Modelo lineal sencillo, útil como baseline y para interpretar coeficientes.</p>
-            <span class="badge bg-secondary">Interpretabilidad alta</span>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-dark text-white shadow border border-warning">
-          <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-tree text-success me-2"></i>Random Forest <span class="badge bg-warning text-dark ms-2">Mejor desempeño</span></h5>
-            <p class="card-text">Ensamble de árboles de decisión, robusto ante datos desbalanceados y outliers.</p>
-            <span class="badge bg-success">Detección precisa</span>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-dark text-white shadow">
-          <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-bolt text-warning me-2"></i>XGBoost</h5>
-            <p class="card-text">Algoritmo de boosting, destaca en competiciones y manejo de desbalance.</p>
-            <span class="badge bg-warning">Optimización avanzada</span>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-dark text-white shadow">
-          <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-brain text-info me-2"></i>Red Neuronal (MLP)</h5>
-            <p class="card-text">Modelo sencillo de red neuronal, puede capturar relaciones no lineales.</p>
-            <span class="badge bg-info">Flexibilidad</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mb-3">
-      <h5 class="mb-2"><i class="fas fa-tasks text-info"></i> Métricas clave:</h5>
-      <ul class="list-inline">
-        <li class="list-inline-item" data-bs-toggle="tooltip" title="Porcentaje de aciertos totales">Accuracy</li>
-        <li class="list-inline-item" data-bs-toggle="tooltip" title="Proporción de fraudes correctamente identificados">Recall</li>
-        <li class="list-inline-item" data-bs-toggle="tooltip" title="Precisión en las predicciones de fraude">Precision</li>
-        <li class="list-inline-item" data-bs-toggle="tooltip" title="Equilibrio entre Recall y Precision">F1-score</li>
-        <li class="list-inline-item" data-bs-toggle="tooltip" title="Área bajo la curva ROC, mide el poder de discriminación">ROC-AUC</li>
-      </ul>
-      <small class="text-secondary d-block mb-2">Pasa el mouse sobre cada métrica para ver su definición.</small>
-      <h5 class="mb-2"><i class="fas fa-balance-scale text-info"></i> Técnicas de balanceo:</h5>
-      <span class="badge bg-info">SMOTE</span>
-      <span class="badge bg-info">Undersampling</span>
-    </div>
-  </div>
-</section>
-<script>
-  // Bootstrap tooltips
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
-  })
-</script>
-  <section class="section" id="modelos">
     <div class="container">
-      <h2><i class="fas fa-robot icon-title"></i>Modelos Machine Learning</h2>
-      <p>
-        Se entrenaron y evaluaron los siguientes algoritmos:
-      </p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Regresión Logística</li>
-        <li class="list-group-item">Random Forest</li>
-        <li class="list-group-item">XGBoost</li>
-        <li class="list-group-item">Red Neuronal Simple (MLP)</li>
-      </ul>
-      <p>
-        Métricas clave: <strong>Precision, Recall, F1-score, ROC-AUC</strong>. <br>
-        Técnicas de balanceo: <code>SMOTE</code> y <code>undersampling</code>.
-      </p>
+      <h2 class="text-center mb-4"><i class="fas fa-robot icon-title"></i> Modelos Machine Learning</h2>
+      <div class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+        <div class="col">
+          <div class="card h-100 bg-dark text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-chart-line text-info me-2"></i>Regresión Logística</h5>
+              <p class="card-text">Modelo lineal sencillo, útil como baseline y para interpretar coeficientes.</p>
+              <span class="badge bg-secondary">Interpretabilidad alta</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 bg-dark text-white shadow border border-warning">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-tree text-success me-2"></i>Random Forest <span class="badge bg-warning text-dark ms-2">Mejor desempeño</span></h5>
+              <p class="card-text">Ensamble de árboles de decisión, robusto ante datos desbalanceados y outliers.</p>
+              <span class="badge bg-success">Detección precisa</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 bg-dark text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-bolt text-warning me-2"></i>XGBoost</h5>
+              <p class="card-text">Algoritmo de boosting, destaca en competiciones y manejo de desbalance.</p>
+              <span class="badge bg-warning">Optimización avanzada</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 bg-dark text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-brain text-info me-2"></i>Red Neuronal (MLP)</h5>
+              <p class="card-text">Modelo sencillo de red neuronal, puede capturar relaciones no lineales.</p>
+              <span class="badge bg-info">Flexibilidad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <h5 class="mb-2"><i class="fas fa-tasks text-info"></i> Métricas clave:</h5>
+        <ul class="list-inline">
+          <li class="list-inline-item" data-bs-toggle="tooltip" title="Porcentaje de aciertos totales">Accuracy</li>
+          <li class="list-inline-item" data-bs-toggle="tooltip" title="Proporción de fraudes correctamente identificados">Recall</li>
+          <li class="list-inline-item" data-bs-toggle="tooltip" title="Precisión en las predicciones de fraude">Precision</li>
+          <li class="list-inline-item" data-bs-toggle="tooltip" title="Equilibrio entre Recall y Precision">F1-score</li>
+          <li class="list-inline-item" data-bs-toggle="tooltip" title="Área bajo la curva ROC, mide el poder de discriminación">ROC-AUC</li>
+        </ul>
+        <small class="text-secondary d-block mb-2">Pasa el mouse sobre cada métrica para ver su definición.</small>
+        <h5 class="mb-2"><i class="fas fa-balance-scale text-info"></i> Técnicas de balanceo:</h5>
+        <span class="badge bg-info">SMOTE</span>
+        <span class="badge bg-info">Undersampling</span>
+      </div>
     </div>
   </section>
 
@@ -701,8 +342,128 @@ document.getElementById('grafico-selector').addEventListener('change', function(
       <span id="year"></span>
     </div>
   </footer>
+
+  <!-- Scripts avanzados y tooltips Bootstrap -->
   <script>
+    // Actualiza año en footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tooltips Bootstrap (para métricas en modelos)
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+    // Visualizaciones avanzadas con Plotly.js
+    document.addEventListener("DOMContentLoaded", function() {
+      const explicaciones = {
+        pie: "Este gráfico muestra la proporción de transacciones fraudulentas frente a las normales. Es útil para visualizar el desbalance de clases en el dataset.",
+        hist: "El histograma representa la distribución de los montos de transacciones. Ayuda a detectar outliers y patrones en los valores.",
+        roc: "La curva ROC evalúa el rendimiento del modelo clasificando entre fraude y no fraude. Un área bajo la curva (AUC) cercana a 1 indica un buen desempeño."
+      };
+
+      function mostrarExplicacion(side, tipo) {
+        document.getElementById('explicacion-' + side).textContent = explicaciones[tipo] || '';
+      }
+
+      function getGraphData(type) {
+        if (type === 'pie') {
+          return {
+            data: [{
+              values: [284315, 492],
+              labels: ['No Fraude', 'Fraude'],
+              type: 'pie',
+              marker: { colors: ['#00fff1','#ff4b5c'] }
+            }],
+            layout: {
+              title: 'Distribución de Clases en el Dataset',
+              paper_bgcolor: 'rgba(44,83,100,0.9)',
+              font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+              showlegend: true
+            }
+          };
+        } else if (type === 'hist') {
+          return {
+            data: [{
+              x: [12, 15, 32, 60, 80, 99, 120, 150, 170, 200, 220, 300, 360, 410, 510, 600, 1000, 1500, 2000],
+              type: 'histogram',
+              marker: { color: '#00fff1' }
+            }],
+            layout: {
+              title: 'Histograma de Montos',
+              paper_bgcolor: 'rgba(44,83,100,0.9)',
+              font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+              xaxis: { title: 'Monto de la transacción' },
+              yaxis: { title: 'Frecuencia' }
+            }
+          };
+        } else if (type === 'roc') {
+          return {
+            data: [
+              {
+                x: [0, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1],
+                y: [0, 0.6, 0.8, 0.87, 0.92, 0.97, 0.99, 1],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'ROC Curve',
+                line: { color: '#00fff1' }
+              },
+              {
+                x: [0,1],
+                y: [0,1],
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Random',
+                line: { dash: 'dot', color: '#888' }
+              }
+            ],
+            layout: {
+              title: 'Curva ROC Interactiva',
+              paper_bgcolor: 'rgba(44,83,100,0.9)',
+              font: { color: '#00fff1', family: 'Inter, Arial, sans-serif' },
+              xaxis: { title: 'False Positive Rate' },
+              yaxis: { title: 'True Positive Rate' },
+              showlegend: true
+            }
+          };
+        }
+      }
+
+      function drawGraph(side, type) {
+        const config = getGraphData(type);
+        Plotly.newPlot(`plotly-${side}`, config.data, config.layout, {responsive:true});
+        mostrarExplicacion(side, type);
+      }
+      drawGraph('left', document.getElementById('grafico-left').value);
+      drawGraph('right', document.getElementById('grafico-right').value);
+
+      document.getElementById('grafico-left').addEventListener('change', function() {
+        drawGraph('left', this.value);
+      });
+      document.getElementById('grafico-right').addEventListener('change', function() {
+        drawGraph('right', this.value);
+      });
+
+      // Sincronización de ejes (zoom/pan) entre paneles
+      let syncActive = false;
+      document.getElementById('sync-ejes').addEventListener('click', function() {
+        syncActive = !syncActive;
+        document.getElementById('sync-status').textContent = syncActive ? 'Sincronización activada' : 'Sincronización desactivada';
+        if (syncActive) {
+          Plotly.d3.selectAll('#plotly-left, #plotly-right').on('plotly_relayout', function(event) {
+            const source = this.id;
+            const target = source === 'plotly-left' ? 'plotly-right' : 'plotly-left';
+            const leftType = document.getElementById('grafico-left').value;
+            const rightType = document.getElementById('grafico-right').value;
+            if (leftType === rightType && leftType !== 'pie') {
+              Plotly.relayout(target, event.detail);
+            }
+          });
+        } else {
+          Plotly.d3.selectAll('#plotly-left, #plotly-right').on('plotly_relayout', null);
+        }
+      });
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
