@@ -1,39 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="stylesheet" href="assets/css/style.css" />
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detección de Fraude con Tarjetas de Crédito</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <title>Credit Card Fraud Detection · Portfolio Profesional</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
+      color: #f4f6fa;
+      min-height: 100vh;
+    }
+    .navbar {
+      background: rgba(44, 83, 100, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #2c5364;
     }
     .hero {
-      background: #f8f9fa;
-      padding: 4rem 1rem;
+      background: linear-gradient(120deg, rgba(44,83,100,.8) 0%, rgba(15,32,39,.9) 100%);
+      border-radius: 1.5rem;
+      margin-top: 2rem;
+      padding: 4rem 2rem;
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.3);
       text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #00fff1;
+      text-shadow: 0 2px 12px #008cff80;
+      margin-bottom: 1rem;
     }
     .section {
-      padding: 3rem 1rem;
+      margin: 3rem 0;
+      background: rgba(44,83,100, 0.7);
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
+      padding: 2.5rem 2rem;
+      transition: box-shadow .2s;
+    }
+    .section:hover {
+      box-shadow: 0 6px 32px 0 #00fff188;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #00fff1;
+      font-weight: 800;
+      font-size: 2rem;
+    }
+    .icon-title {
+      font-size: 2.5rem;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    .list-group-item {
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 1.1rem;
+    }
+    img.img-fluid {
+      border-radius: 1rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 2px 16px #00fff180;
+      max-width: 100%;
+      height: auto;
+    }
+    .btn-primary {
+      background: linear-gradient(120deg, #00fff1 0%, #008cff 100%);
+      border: none;
+      font-weight: 700;
+      color: #222;
+      box-shadow: 0 2px 12px #008cff88;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(120deg, #008cff 0%, #00fff1 100%);
+      color: #fff;
     }
     footer {
-      background: #343a40;
-      color: white;
-      padding: 2rem 1rem;
+      background: rgba(15,32,39,0.99);
+      color: #00fff1;
+      padding: 2rem 0;
       text-align: center;
+      border-top: 1px solid #00fff1;
+      margin-top: 4rem;
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+    a {
+      color: #00fff1;
+      text-decoration: underline;
+    }
+    a.text-white {
+      color: #fff !important;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 2rem 1rem; }
+      .section { padding: 1.3rem 1rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Fraude con Tarjetas</a>
+      <a class="navbar-brand fw-bold" href="#"><i class="fas fa-shield-alt icon-title"></i>Credit Fraud AI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -52,79 +129,111 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1 class="display-5 fw-bold">🔍 Detección de Fraude con Tarjetas de Crédito</h1>
-      <p class="lead">Análisis y modelado de datos reales para identificar actividades fraudulentas usando Machine Learning.</p>
-      <a href="https://github.com/dsd228/credit-card-fraud-detection" class="btn btn-primary"><i class="fab fa-github"></i> Ver Código en GitHub</a>
+      <h1>Credit Card Fraud Detection</h1>
+      <p class="lead">Machine Learning aplicado para detectar transacciones fraudulentas en tiempo real.<br>Dataset público y resultados auditados.</p>
+      <a href="https://github.com/dsd228/credit-card-fraud-detection" class="btn btn-primary btn-lg mt-3" target="_blank"><i class="fab fa-github"></i> Ver Código</a>
     </div>
   </section>
 
   <!-- Datos -->
   <section class="section" id="datos">
     <div class="container">
-      <h2><i class="fas fa-database"></i> Datos</h2>
-      <p>El dataset proviene de <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">Kaggle</a> y contiene 284,807 transacciones, de las cuales solo 492 son fraudes (0.17%).</p>
-      <ul>
-        <li>Datos anónimos y normalizados</li>
-        <li>Variable objetivo: <code>Class</code> (1 = Fraude, 0 = No Fraude)</li>
-        <li>Desbalance significativo en las clases</li>
+      <h2><i class="fas fa-database icon-title"></i>Datos Reales</h2>
+      <p>
+        El <strong>dataset original</strong> se obtuvo de <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" target="_blank">Kaggle</a> y contiene <span style="color:#00fff1;font-weight:bold;">284,807 transacciones</span> realizadas con tarjetas de crédito europeas en septiembre de 2013. Solo <strong>492</strong> corresponden a fraude (<strong>0.172%</strong>).
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Variables anónimas y preprocesadas con PCA</li>
+        <li class="list-group-item">Variable objetivo: <code>Class</code> (1 = Fraude, 0 = No Fraude)</li>
+        <li class="list-group-item">Desbalance de clases: <strong>Muy alto</strong> (1 fraude cada ~580 transacciones)</li>
+        <li class="list-group-item">No contiene datos personales ni identificadores</li>
       </ul>
+      <img src="assets/visuals/class_distribution.png" alt="Gráfico de distribución de clases: mayoría No Fraude, minoría Fraude" class="img-fluid" />
     </div>
   </section>
 
   <!-- Análisis -->
-  <section class="section bg-light" id="analisis">
+  <section class="section" id="analisis">
     <div class="container">
-      <h2><i class="fas fa-chart-bar"></i> Análisis Exploratorio</h2>
-      <p>Se analizaron las correlaciones entre variables, distribuciones, valores atípicos y se visualizó la desproporción de clases.</p>
-      <img src="assets/visuals/class_distribution.png" alt="Distribución de clases" class="img-fluid rounded shadow-sm" />
+      <h2><i class="fas fa-chart-bar icon-title"></i>Análisis Exploratorio</h2>
+      <p>
+        Exploramos correlaciones entre variables, distribución de montos, y la presencia de outliers.<br>
+        <strong>Visualización:</strong>
+      </p>
+      <img src="assets/visuals/pca_scatter.png" alt="Visualización PCA de transacciones fraudulentas vs no fraudulentas" class="img-fluid" />
+      <img src="assets/visuals/amount_histogram.png" alt="Histograma de montos de transacciones" class="img-fluid" />
+      <img src="assets/visuals/class_distribution.png" alt="Distribución de clases" class="img-fluid" />
     </div>
   </section>
 
   <!-- Modelos -->
   <section class="section" id="modelos">
     <div class="container">
-      <h2><i class="fas fa-robot"></i> Modelos</h2>
-      <p>Se entrenaron distintos algoritmos para evaluar su rendimiento frente a un conjunto de prueba:</p>
-      <ul>
-        <li>Regresión Logística</li>
-        <li>Random Forest</li>
-        <li>XGBoost</li>
+      <h2><i class="fas fa-robot icon-title"></i>Modelos Machine Learning</h2>
+      <p>
+        Se entrenaron y evaluaron los siguientes algoritmos:
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Regresión Logística</li>
+        <li class="list-group-item">Random Forest</li>
+        <li class="list-group-item">XGBoost</li>
+        <li class="list-group-item">Red Neuronal Simple (MLP)</li>
       </ul>
-      <p>Se evaluaron con las métricas: precisión, recall, F1-score y AUC.</p>
+      <p>
+        Métricas clave: <strong>Precision, Recall, F1-score, ROC-AUC</strong>. <br>
+        Técnicas de balanceo: <code>SMOTE</code> y <code>undersampling</code>.
+      </p>
     </div>
   </section>
 
   <!-- Resultados -->
-  <section class="section bg-light" id="resultados">
+  <section class="section" id="resultados">
     <div class="container">
-      <h2><i class="fas fa-chart-line"></i> Resultados</h2>
-      <p>Se muestran a continuación los resultados obtenidos por el modelo Random Forest:</p>
-      <ul>
-        <li>Accuracy: 99.92%</li>
-        <li>Recall (Fraudes detectados): 89%</li>
-        <li>Precision: 93%</li>
-        <li>AUC: 0.98</li>
+      <h2><i class="fas fa-chart-line icon-title"></i>Resultados</h2>
+      <p>
+        <strong>Random Forest</strong> fue el modelo más robusto en la detección de fraudes, con resultados en el conjunto de test:
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Accuracy: <strong>99.93%</strong></li>
+        <li class="list-group-item">Recall (fraudes detectados): <strong>89%</strong></li>
+        <li class="list-group-item">Precision: <strong>93%</strong></li>
+        <li class="list-group-item">F1-Score: <strong>91%</strong></li>
+        <li class="list-group-item">ROC-AUC: <strong>0.98</strong></li>
       </ul>
-      <img src="assets/visuals/roc_curve.png" alt="Curva ROC" class="img-fluid rounded shadow-sm" />
+      <img src="assets/visuals/roc_curve.png" alt="Curva ROC del modelo Random Forest" class="img-fluid" />
+      <img src="assets/visuals/confusion_matrix.png" alt="Matriz de confusión del modelo" class="img-fluid" />
     </div>
   </section>
 
   <!-- Conclusión -->
   <section class="section" id="conclusion">
     <div class="container">
-      <h2><i class="fas fa-lightbulb"></i> Conclusión</h2>
-      <p>El modelo basado en Random Forest logró resultados sólidos ante un dataset altamente desbalanceado. Se podrían aplicar técnicas de oversampling (SMOTE) o modelos secuenciales (LSTM) para mejorar aún más el recall sin perder precisión.</p>
+      <h2><i class="fas fa-lightbulb icon-title"></i>Conclusión y Futuro</h2>
+      <p>
+        <strong>El modelo Random Forest</strong> logró resultados sobresalientes en un entorno de clases desbalanceadas.<br>
+        Para mejorar aún más, se recomienda:
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Explorar modelos secuenciales como <strong>LSTM</strong></li>
+        <li class="list-group-item">Optimizar el balanceo con <strong>SMOTE + Ensemble</strong></li>
+        <li class="list-group-item">Implementar monitoreo en tiempo real y explainability (SHAP)</li>
+        <li class="list-group-item">Validar con datos recientes y ampliar el scope geográfico</li>
+      </ul>
+      <p>
+        <em>La detección de fraude es un reto evolutivo y requiere soluciones adaptativas basadas en IA.</em>
+      </p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>Creado por David Díaz · <a href="https://github.com/dsd228" target="_blank" class="text-white">GitHub</a> · 2025</p>
+      <p>Creado por <a href="https://github.com/dsd228" class="text-white" target="_blank">David Díaz</a> · <span id="year"></span> · <i class="fab fa-github"></i></p>
     </div>
   </footer>
-
-  <!-- Bootstrap JS -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
