@@ -1,82 +1,176 @@
----
-layout: default
-title: Credit Card Fraud Detection
----
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Card Fraud Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f0f0f;
+      color: #e6f1ff;
+      font-family: 'Orbitron', sans-serif;
+      overflow-x: hidden;
+    }
 
-<style>
-  body {
-    background-color: #0f0f0f;
-    color: #f0f0f0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0 20px;
-  }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
 
-  h1, h2, h3 {
-    color: #00ffff;
-  }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-  a.button {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 12px 24px;
-    background: linear-gradient(90deg, #00ffff, #0088ff);
-    color: #0f0f0f;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-  }
+    h1 {
+      font-size: 2.8em;
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff;
+      margin-bottom: 20px;
+    }
 
-  a.button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(90deg, #0088ff, #00ffff);
-    color: #fff;
-  }
+    h2 {
+      color: #00bfff;
+      margin-top: 40px;
+    }
 
-  code {
-    background-color: #1f1f1f;
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: #ffcc00;
-  }
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
 
-  .container {
-    max-width: 960px;
-    margin: auto;
-    padding-top: 40px;
-  }
+    .btn {
+      display: inline-block;
+      margin: 15px 10px;
+      padding: 15px 25px;
+      background: linear-gradient(135deg, #00ffff, #0055ff);
+      color: black;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ffff;
+      transition: 0.3s ease;
+    }
 
-  footer {
-    margin-top: 40px;
-    text-align: center;
-    color: #777;
-    font-size: 0.8em;
-  }
-</style>
+    .btn:hover {
+      background: linear-gradient(135deg, #0055ff, #00ffff);
+      color: white;
+      transform: scale(1.05);
+    }
 
-<div class="container">
-  <h1>🔍 Credit Card Fraud Detection</h1>
-  <p>Bienvenido a un proyecto de detección de fraudes con tarjetas de crédito usando machine learning.</p>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
 
-  <a class="button" href="https://github.com/dsd228/credit-card-fraud-detection" target="_blank">🔗 Ver Repositorio</a>
-  <a class="button" href="https://dsd228.github.io/credit-card-fraud-detection/report" target="_blank">📊 Ver Informe</a>
+    li::before {
+      content: "🔹 ";
+      color: #00ffff;
+    }
 
-  <h2>📌 Descripción del Proyecto</h2>
-  <p>Este proyecto aplica técnicas de ciencia de datos para identificar transacciones fraudulentas en un conjunto de datos real...</p>
+    footer {
+      margin-top: 60px;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
 
-  <h3>🔧 Tecnologías usadas:</h3>
-  <ul>
-    <li>Python</li>
-    <li>Scikit-learn</li>
-    <li>Pandas / NumPy</li>
-    <li>Gráficos con Matplotlib y Seaborn</li>
-  </ul>
+  <div class="container">
+    <h1>💳 Credit Card Fraud Detection</h1>
+    <p>Proyecto de Machine Learning para identificar fraudes con tarjetas de crédito usando modelos de clasificación y visualización de datos.</p>
 
-  <h3>📈 Resultados principales</h3>
-  <p>El modelo alcanzó un <code>Recall</code> de 91% y una <code>Precision</code> del 87% en el conjunto de validación.</p>
+    <h2>📊 Métricas del modelo</h2>
+    <ul>
+      <li><strong>Recall:</strong> 91%</li>
+      <li><strong>Precisión:</strong> 87%</li>
+      <li><strong>F1 Score:</strong> 89%</li>
+      <li><strong>Algoritmo:</strong> Random Forest Classifier</li>
+    </ul>
 
-  <footer>
-    © 2025 David Díaz – Proyecto para portafolio profesional
-  </footer>
-</div>
+    <h2>🛠️ Tecnologías utilizadas</h2>
+    <ul>
+      <li>Python</li>
+      <li>Pandas & NumPy</li>
+      <li>Scikit-learn</li>
+      <li>Matplotlib & Seaborn</li>
+    </ul>
+
+    <div>
+      <a class="btn" href="https://github.com/dsd228/credit-card-fraud-detection" target="_blank">🔍 Ver Repositorio</a>
+      <a class="btn" href="https://dsd228.github.io/credit-card-fraud-detection/report" target="_blank">📊 Ver Informe</a>
+    </div>
+
+    <footer>© 2025 David Díaz – Portafolio profesional con estilo futurista</footer>
+  </div>
+
+  <script>
+    // Partículas animadas
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particlesArray = [];
+    const numberOfParticles = 120;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // rebote en bordes
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        ctx.fillStyle = '#00ffff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
