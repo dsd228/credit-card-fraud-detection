@@ -153,58 +153,63 @@
   </section>
 
   <!-- Análisis -->
-  <section class="section" id="analisis">
-    <div class="container">
-      <h2><i class="fas fa-chart-bar icon-title"></i>Análisis Exploratorio</h2>
-      <p>
-        Exploramos correlaciones entre variables, distribución de montos, y la presencia de outliers.<br>
-        <strong>Visualización:</strong>
-      </p>
-      <img src="assets/visuals/pca_scatter.png" alt="Visualización PCA de transacciones fraudulentas vs no fraudulentas" class="img-fluid" />
-      <img src="assets/visuals/amount_histogram.png" alt="Histograma de montos de transacciones" class="img-fluid" />
-      <img src="assets/visuals/class_distribution.png" alt="Distribución de clases" class="img-fluid" />
-    </div>
-  </section>
-  <section id="analisis" class="py-5 bg-light">
+ <!-- ANÁLISIS VISUAL CON BOTÓN DESTACADO -->
+<section id="analisis" class="section">
   <div class="container">
-    <h2 class="text-center mb-4">Análisis Visual</h2>
-    <p class="text-center">A continuación se muestran gráficos generados automáticamente a partir del modelo de detección de fraude.</p>
-  <div class="text-center my-4">
-  <a href="https://github.com/dsd228/credit-card-fraud-detection/blob/main/fraud_detection.ipynb"
-     target="_blank"
-     class="btn btn-lg btn-gradient shadow-lg px-4 py-2 d-inline-flex align-items-center"
-     style="
-        background: linear-gradient(90deg, #26d0ce 0%, #1a2980 100%);
-        color: #fff;
-        border: none;
-        font-weight: 600;
-        font-size: 1.15rem;
-        letter-spacing: 0.5px;
-        transition: transform 0.2s, box-shadow 0.2s;
-      "
-     onmouseover="this.style.transform='scale(1.06)';this.style.boxShadow='0 8px 32px #26d0ce99';"
-     onmouseout="this.style.transform='scale(1.0)';this.style.boxShadow='0 4px 16px #26d0ce44';"
-  >
-    <i class="fas fa-book-open me-2"></i>
-    Ver análisis completo en Jupyter Notebook
-  </a>
-  <div class="mt-2 text-secondary" style="font-size:1.02rem;">
-    <i class="fas fa-info-circle"></i> Consulta el código, los pasos de modelado y las visualizaciones detalladas.
-  </div>
-</div>  
-
-    <!-- Tus gráficos aquí -->
-
+    <h2 class="text-center mb-4"><i class="fas fa-chart-bar icon-title"></i> Análisis Visual</h2>
+    <p class="text-center mb-4">A continuación se muestran gráficos generados automáticamente a partir del modelo de detección de fraude.</p>
+    
     <div class="text-center my-4">
       <a href="https://github.com/dsd228/credit-card-fraud-detection/blob/main/fraud_detection.ipynb"
          target="_blank"
-         class="btn btn-outline-info">
-        📓 Ver análisis completo en Jupyter Notebook
+         class="btn btn-lg shadow-lg px-4 py-2 d-inline-flex align-items-center"
+         style="
+            background: linear-gradient(90deg, #26d0ce 0%, #1a2980 100%);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+          "
+         onmouseover="this.style.transform='scale(1.06)';this.style.boxShadow='0 8px 32px #26d0ce99';"
+         onmouseout="this.style.transform='scale(1.0)';this.style.boxShadow='0 4px 16px #26d0ce44';"
+      >
+        <i class="fas fa-book-open me-2"></i>
+        Ver análisis completo en Jupyter Notebook
       </a>
-      <p class="mt-2">Consulta el código, los pasos de modelado y las visualizaciones detalladas.</p>
+      <div class="mt-2 text-secondary" style="font-size:1.02rem;">
+        <i class="fas fa-info-circle"></i> Consulta el código, los pasos de modelado y las visualizaciones detalladas.
+      </div>
+    </div>
+
+    <!-- Tus gráficos aquí -->
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center my-4">
+        <img src="./assets/visuals/grafico_distribucion.png" alt="Distribución de clases" class="img-fluid mb-3" style="max-width: 600px;">
+        <p><strong>Distribución de clases</strong></p>
+      </div>
+      <div class="col-md-6 text-center my-4">
+        <img src="./assets/visuals/grafico_roc.png" alt="Curva ROC" class="img-fluid mb-3" style="max-width: 600px;">
+        <p><strong>Curva ROC</strong></p>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- FOOTER ÚNICO Y PROFESIONAL -->
+<footer class="bg-dark text-white py-4 mt-5">
+  <div class="container text-center">
+    Creado por 
+    <a href="https://github.com/dsd228" target="_blank" class="text-info">David Díaz</a> · 
+    <a href="https://github.com/dsd228/credit-card-fraud-detection/blob/main/fraud_detection.ipynb" target="_blank" class="text-info">Notebook Jupyter</a>
+    <br>
+    <span id="year"></span>
+  </div>
+</footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
   <!-- Modelos -->
   <section id="modelo" class="container">
